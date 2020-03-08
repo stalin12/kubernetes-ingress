@@ -5,7 +5,7 @@ To configure Ingress in Kubernetes Cluster(Bare Metal) we need to configure Ingr
 
 Steps to configure Nginx Ingress controller.
 
-1. Create the Service account and namespace.
+1. Create the Service account and namespace.<br>
    kubectl apply -f ns-and-sa.yaml
 2. Create Role based access for the namespace.
    kubectl apply -f rbac.yaml
