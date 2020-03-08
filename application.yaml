@@ -1,0 +1,117 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  creationTimestamp: null
+  labels:
+    app: webapp1
+  name: webapp1
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: webapp1
+  strategy: {}
+  template:
+    metadata:
+      labels:
+        app: webapp1
+    spec:
+      containers:
+      - image: katacoda/docker-http-server:latest
+        name: webapp1
+        ports:
+        - containerPort: 80
+
+---
+
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  creationTimestamp: null
+  labels:
+    app: webapp2
+  name: webapp2
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: webapp2
+  strategy: {}
+  template:
+    metadata:
+      labels:
+        app: webapp2
+    spec:
+      containers:
+      - image: katacoda/docker-http-server:latest
+        name: webapp2
+        ports:
+        - containerPort: 80
+
+---
+
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  creationTimestamp: null
+  labels:
+    app: webapp3
+  name: webapp3
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: webapp3
+  strategy: {}
+  template:
+    metadata:
+      labels:
+        app: webapp3
+    spec:
+      containers:
+      - image: katacoda/docker-http-server:latest
+        name: webapp3
+        ports:
+        - containerPort: 80
+
+---
+
+apiVersion: v1
+kind: Service
+metadata:
+  name: webapp1-svc
+  labels:
+    app: webapp1
+spec:
+  ports:
+  - port: 80
+  selector:
+    app: webapp1
+
+---
+
+apiVersion: v1
+kind: Service
+metadata:
+  name: webapp2-svc
+  labels:
+    app: webapp2
+spec:
+  ports:
+  - port: 80
+  selector:
+    app: webapp2
+
+---
+
+apiVersion: v1
+kind: Service
+metadata:
+  name: webapp3-svc
+  labels:
+    app: webapp3
+spec:
+  ports:
+  - port: 80
+  selector:
+    app: webapp3
